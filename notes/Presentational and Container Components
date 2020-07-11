@@ -1,0 +1,29 @@
+Component Types
+• Can be classified based how they are used
+ – Presentational vs Container
+ – Skinny vs Fat
+ – Dumb vs Smart
+ – Stateless vs Stateful
+
+/**********************************Presentational Components**************************************/
+• Mainly concerned with rendering the “view”
+ – How things look (markup, styles)
+• Render the view based on the data that is passed to them in props(done in dishdetails component)
+• Do not maintain their own local state
+ – Can be relaxed to maintain only UI state than data
+
+/*********************************Container Components*******************************************/
+• Responsible for making things work
+  – Data fetching, state updates
+• Make use of presentational components for rendering
+  – Can wrap presentational components in wrapping divs
+• Provide the data to the presentational components in the form of props
+• Maintain state and communicate with data sources
+
+So, they are more worried about fetching the data, say for example, from a server and then using the data within the application 
+or to set up the state or maybe taking care of updating the state in response to any user interactions on the screen 
+or updating the states based upon the data sent back from the server.
+
+
+
+!,a,q,z
