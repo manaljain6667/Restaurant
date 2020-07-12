@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap'; 
 import Menu from './MenuComponent';
 import {DISHES} from '../shared/dishes';
 import Dishdetail from './DishdetailComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
+
 class Main extends Component {
   constructor(props){
     super(props);
@@ -17,11 +19,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+        <Header />
         <Menu dishes={this.state.dishes}
               onClick={(dishId)=>this.onDishSelect(dishId)}/>
         <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]}/>
@@ -29,6 +27,7 @@ class Main extends Component {
       the selectedDish, which contains the dishId of the selectedDish.  */}
 {/* this filter function will give the sub array of the dishes for which the sub-array contains are rather, 
      constrained part of the array, or just the elements from the array, for which this property, the dishId matches selected dish.  */}
+        <Footer />
       </div>
     );
   }
