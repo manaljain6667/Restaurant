@@ -1,0 +1,15 @@
+Virtual DOM
+• Browser DOM is a browser object
+• Virtual DOM is a React object
+– A lightweight representation of the Browser DOM
+– In-memory tree data structure of plain JS objects
+– Manipulations extremely fast compared to modifying the browser DOM
+– Created completely from scratch on every setState
+
+Updating the DOM
+• Diffing algorithm will detect those nodes that are changed
+– Updates the entire sub-tree if diffing detects that two elements are of different types
+– Using “key” you can hint child elements as stable
+• No need to re-render where keys do not change
+• React Fiber: new reconciliation algorithm in React 16
+– Incremental rendering

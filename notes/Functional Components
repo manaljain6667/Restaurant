@@ -1,0 +1,11 @@
+Class Components
+• Extend React.Component to get class components
+• Need to implement the render() method that returns the view
+• Can have local state
+• Lifecycle hooks
+
+Functional Components
+• Simplest way to define React components
+• JavaScript function that returns a React element,or a collection of React elements that define the view
+• Receives a “props” object as a parameter
+• Cannot have local state or access lifecycle hooks

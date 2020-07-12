@@ -1,0 +1,18 @@
+What is React?
+• A JavaScript library for building user interfaces
+• Declarative
+• Component-based
+  In a Component based approach, we encapsulate behaviors into small units called Components. 
+• Technology stack agnostic
+  React makes no assumptions about the entire technology stack that you're going to use for implementing your Web applications
+
+React Vocabulary
+• One-way data flow      • Virtual DOM
+• JSX                    • Element
+• Components             • Flux / Redux
+• State                  • Testing
+• Props
+  Props, a way of passing data between the various components.
+
+
+
