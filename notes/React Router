@@ -1,0 +1,28 @@
+React Router
+• Collection of navigational components
+  – Enables navigation among views
+  – Router components, route matching components and navigation components
+• Uses a browser-based bookmarkable URLs as an instruction to navigate to a client-generated view in your web app
+  – Can also pass along optional parameters
+
+Web App Routing
+• Install react-router-dom
+• Router component: <BrowserRouter>
+– Creates specialized history object
+– Also <HashRouter> if you are using a static file server
+– Enclose your app in BrowserRouter
+
+Route Matching
+• Route matching components: <Route> and <Switch>
+– <Route>’s path prop enables specification of the current location’s pathname
+– <Route>’s component prop specifies the corresponding view for the location
+– Using exact attribute ensures that the path must be exactly matched
+– <Redirect> enables the default route specification
+– <Switch> enables grouping together several routes
+• Will iterate over all its children and find the first one that matches the path
+
+Navigation
+• Navigation is supported through the <Link> and <NavLink> components:
+  – <Link> creates links in your application
+• Will render as <a> in the HTML
+  – <NavLink> also attaches the active class to the link when its prop matches the current location
