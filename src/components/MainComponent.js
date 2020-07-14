@@ -19,7 +19,6 @@ class Main extends Component {
       comments: COMMENTS,
       promotions: PROMOTIONS,
       leaders: LEADERS
-      //selectedDish:null
     };
   }
   
@@ -33,6 +32,12 @@ class Main extends Component {
           />
       );
     }
+    const DishWithId = ({match}) => {
+      return(
+          <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+            comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+      );
+    };
     return (
       <div>
         <Header />
@@ -43,6 +48,7 @@ class Main extends Component {
               <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
               <Route exact path='/contactus' component={Contact} />
               {/* exact here that means that the path should exactly match this with nothing else, beyond menu */}
+              <Route path='/menu/:dishId' component={DishWithId} />
               <Redirect to="/home" />
               {/* if the URL part does not match anything then you will redirect it to the home component. */}
             </Switch>

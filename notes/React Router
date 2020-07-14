@@ -26,3 +26,24 @@ Navigation
   – <Link> creates links in your application
 • Will render as <a> in the HTML
   – <NavLink> also attaches the active class to the link when its prop matches the current location
+
+React Router: Parameters
+React Router
+• Paths specified as a URL
+• Paths can also carry parameter values:
+  – e.g., /menu/42 where 42 is a route parameter
+• Route parameters specified in the path specification as a token
+  – e.g., path: ‘menu/:id’ where id is the token
+
+Route Parameters
+• Route parameters can be specified using a link parameter while specifiyng the link
+  – e.g., <Link to{`/menu/${dish.id}`} >
+• Route passes three props to the component:
+  – match, location, history
+  Match is the one that carries the route parameters inside it as its own properties. 
+  Location where you are in the URL location and history will allow you to go back.
+
+match Object
+• match object provides information about how a <Route path> matched the URL
+– params: an object that contains key/value pair parsed from the URL corresponding to the dynamic segments of the path
+– e.g. if path is specified as /menu/:id, then a path like /menu/42 will result in match.params.id being equal to “42”
