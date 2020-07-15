@@ -1,0 +1,24 @@
+Forms
+• Cohesive, effective and compelling data entry experience
+• Extensively used in websites and web applications for
+– log in
+– submit information (placing orders, booking a ticket etc.)
+
+HTML Forms
+• Form Tag
+  – <form> . . . </form>
+• Form elements:
+  – <input>
+• type: text, password, submit, radio, checkbox, button, color, date, datetime, email, month, number,
+   range, search, tel, time, url, week
+– <textarea>
+– <button>
+– <select>
+• These elements maintain their own state and update it based on user input
+
+Controlled Components
+• Make the React component control the form that it renders:
+– Single source of truth
+– Tying the form state to component state
+– Controlled component
+• Every state mutation will have an associated handler function
