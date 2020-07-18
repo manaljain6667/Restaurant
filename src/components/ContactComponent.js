@@ -41,11 +41,12 @@ class Contact extends Component{
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();   {/* prevents to go other pages */}
     }
-    handleBlur=(field)=>(evt)=>{
+    
+    handleBlur = (field) => (evt) => {
         this.setState({
-            touched:{...this.state.touched,[field]:true}
-        })
-    }
+          touched: { ...this.state.touched, [field]: true },
+        });
+      }
     validate(firstname,lastname,telnum,email){
         const errors={
             firstname:'',
