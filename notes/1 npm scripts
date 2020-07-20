@@ -3,3 +3,4 @@ npm install bootstrap-social
 npm install react-router-dom
 npm install redux
 npm install react-redux
+npm install react-redux-form

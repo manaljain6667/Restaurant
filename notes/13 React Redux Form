@@ -1,0 +1,13 @@
+React-Redux-Form
+• A versatile, fast, and intuitive library for creating complex and performant forms in React and Redux
+• Collection of reducer creators and action creators
+• Form data stored in Redux store in a model
+• Validation support for forms
+
+LocalForm
+• Maps form model to local state of the component
+• Suitable when you don’t need form data persistence across component mounting/unmounting
+• Can still perform form validation using support from react-redux-form
+
+Suppose you want to persist the state of the form even across page reloads or as you navigate in and out of a view, 
+then React-Redux-Form would be of use to you. So, this is achieved by the form data being stored in the redux in a model.
