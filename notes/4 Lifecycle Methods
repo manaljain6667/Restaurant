@@ -7,20 +7,20 @@ React Component Lifecycle
 
 /*******************************************Mounting Lifecycle Methods********************************************/
 • Called when an instance of a component is being created and inserted into the DOM:
- – constructor()
- – getDerivedStateFromProps()
- – render()
- – componentDidMount()
+  – constructor()
+  – getDerivedStateFromProps()
+  – render()
+  – componentDidMount()
 • An earlier method now deprecated called componentWillMount()
 
 /*****************************************Updating Lifecycle Methods*********************************************/
 • Called when a component is being re-rendered
-– Can be caused by changes to props or state
-– getDerivedStateFromProps()
-– shouldComponentUpdate()
-– render()
-– getSnapshotBeforeUpdate()
-– componentDidUpdate()
+  – Can be caused by changes to props or state
+  – getDerivedStateFromProps()
+  – shouldComponentUpdate()
+  – render()
+  – getSnapshotBeforeUpdate()
+  – componentDidUpdate()
 • Two methods that are now deprecated:
   componentWillReceiveProps() and componentWillUpdate()
 

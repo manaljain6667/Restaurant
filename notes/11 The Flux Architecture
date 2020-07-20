@@ -1,0 +1,14 @@
+What exactly is The Flux Architecture? 
+Again, just like MVC, it is a software engineering pattern.
+one of the salient features is unidirectional data flow.
+
+here the central unit for your architecture is the store.
+what is the store? 
+The store becomes the storehouse for your application state, and any business logic that modifies the application state.
+So the store encompasses this whole thing, and the only way you can modify your application state within the store is by requesting the store. 
+You don't have any setters that the store make available to you.
+
+You can only request for changes to be done to the state through actions which are synced to the dispatcher. 
+So the dispatcher becomes a controlling unit for serializing any actions that you request for changing the store. 
+
+The main component was the store house of the state there,
