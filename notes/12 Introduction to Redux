@@ -40,8 +40,38 @@ React with Redux
 – Surround your App root with <Provider>
 • Takes the store as an attribute
 • Makes store accessible to all connected components
-
-React with Redux
 • The connect() function takes two optional arguments:
 – mapStateToProps(): called every time store state changes. Returns an object full of data with each field being a prop for the wrapped component
 – mapDispatchToProps(): receives the dispatch() method and should return an object full of functions that use dispatch()
+
+Redux Actions
+• Actions: payloads of information that send data from your application to the store
+  – Done through store.dispatch()
+• Plain JS object that must have
+  – A type property that indicates the type of action to be performed
+• Best supported by defining action types as String constants
+  – Rest of the object contains the data necessary for the action (payload)
+
+To help us generate various actions, we make use of action creators:
+
+Action Creators
+• Functions that create actions
+  – Encapsulate the process of creating the action objects
+  – Return the action object
+  – Resulting action object can be passed to the store through dispatch()
+
+Within your store, you have Reducers that take in the action as one of the parameters, 
+and then takes in the previous state or the current state of your application as the other parameter and that generates the used state.
+
+Actions and Reducers
+• Reducers should be able to take the previous state and action and return next state:
+  – Do not mutate state
+    - Make a copy and modify the copy before returning it
+  – Actions typically handled through a switch statement switching on the action type
+  – Return the previous state in the default case
+
+Splitting and Combining Reducers
+• Depending on the state shape, fields and updates to them could be decoupled:
+– Split the reducer into simpler reducer functions that operate on only some of the fields
+• Manages parts/slices of the global state
+– Combine the simpler functions to generate the overall state
