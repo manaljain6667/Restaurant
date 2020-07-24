@@ -16,3 +16,5 @@ export const ConfigureStore = () => {
 
     return store;
 }
+
+//combineReducers combines the reduces

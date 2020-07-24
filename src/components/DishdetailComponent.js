@@ -23,8 +23,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
         }
 
         handleSubmit(values) {
-            console.log('Current State is: ' + JSON.stringify(values));
-            alert('Current State is: ' + JSON.stringify(values));
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
             this.toggleModal();
             // event.preventDefault();
         }
@@ -74,9 +73,9 @@ const minLength = (len) => (val) => val && (val.length >= len);
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="message" md={12}>Comment</Label>
+                                <Label htmlFor="comment" md={12}>Comment</Label>
                                 <Col md={12}>
-                                    <Control.textarea model=".message" id="message" name="message"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="6"
                                         className="form-control" />
                                 </Col>
@@ -98,11 +97,13 @@ const minLength = (len) => (val) => val && (val.length >= len);
 
     }
 
-    function Rendercomments({comments}){
+    function Rendercomments({comments, addComment, dishId}){
         if(comments == null)
           return (<div></div>)
         const comt = comments.map((comment) => {
         return (
+            <div>
+                <ul className='list-unstyled'>
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
                     <p>-- {comment.author},
@@ -114,12 +115,15 @@ const minLength = (len) => (val) => val && (val.length >= len);
                         }).format(new Date(Date.parse(comment.date)))}
                     </p>
                 </li>
+            </ul>
+            </div>
             )
        })
        return(
-           <ul className='list-unstyled'>
+           <div>
                {comt}
-           </ul>
+               <CommentForm dishId={dishId} addComment={addComment}/>
+           </div>
        )}
 
     function Renderdetails({dish}){
@@ -161,10 +165,9 @@ const minLength = (len) => (val) => val && (val.length >= len);
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         <h3>Comments</h3>
-                        <ul className='list-unstyled'>
-                            <Rendercomments comments={props.comments}/>
-                            <CommentForm />
-                        </ul>
+                        <Rendercomments  comments={props.comments} 
+                                        addComment={props.addComment} 
+                                        dishId={props.dish.id}/>
                     </div>
                 </div>
             </div>
