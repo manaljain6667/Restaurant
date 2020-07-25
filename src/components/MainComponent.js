@@ -9,6 +9,7 @@ import About from './AboutComponent';
 import { Switch, Route, Redirect,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addComment, fetchDishes } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
 
 //withrouter is required for configuring my React Component to connect to Redux.
 
@@ -23,7 +24,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   
   addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
-  fetchDishes: () => { dispatch(fetchDishes())}
+  fetchDishes: () => { dispatch(fetchDishes())},
+  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))}
+
 });
 
 // so we can dispatch that punk by using dispatch and in order to do the dispatch, I need to map it in the DispatchToProp so that dispatch 
@@ -74,7 +77,7 @@ class Main extends Component {
               {/* When you have a URL ending with /home, then this will route me to this particular component 
                   that is going to act as the view here. And the components name would be HomePage. */}
               <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
-              <Route exact path='/contactus' component={Contact} />
+              <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
               {/* exact here that means that the path should exactly match this with nothing else, beyond menu */}
               <Route path='/menu/:dishId' component={DishWithId} />
               <Route path='/aboutus' component={Aboutus}/>
