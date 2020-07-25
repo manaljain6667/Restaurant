@@ -4,3 +4,5 @@ npm install react-router-dom
 npm install redux
 npm install react-redux
 npm install react-redux-form
+npm install redux-thunk
+npm install redux-logger
