@@ -1,0 +1,131 @@
+Brief Representational State Transfer (REST)
+
+Web Services 
+• A system designed to support interoperability of systems connected over a network
+  – Service oriented architecture (SOA)
+  – A standardized way of integrating web-based applications using open standards operating over the Internet
+• Two common approaches used in practice:
+  – SOAP (Simple Object Access Protocol) based services
+• Uses WSDL (Web Services Description Language)
+• XML based
+  – REST (Representational State Transfer)
+• Use Web standards
+• Exchange of data using either XML or JSON
+• Simpler compared to SOAP, WSDL etc
+
+Representational State Transfer (REST):
+• Representational State Transfer is a style of software architecture that is specially designed for distribution hypermedia over the WWW. 
+• Introduced in the doctoral dissertation of Roy Fielding
+  – One of the principal authors of the HTTP specification.
+• A collection of network architecture principles which outline how resources are defined and addressed 
+
+This is a collection of network principles that outline how resources can be made available on servers and these resources can be accessed 
+from clients by identifying the resources using REST API endpoints.
+
+• Four basic design principles:
+– REST is built upon HTTP protocol, so it uses all the HTTP methods
+– Be stateless,meaning that the server doesn't store any information about the state after the communication is complete. 
+– the REST way of providing resources is to expose a directory structure like URLs, Uniform Resource Locators.
+– the format for data exchange is typically JSON or XML or both that can be supported using the REST. 
+
+REST and HTTP
+• The motivation for REST was to capture the characteristics of the Web that made the Web successful
+– URI (Uniform Resource Indicator) Addressable resources
+– HTTP Protocol
+– request-response cycle:Make a Request – Receive Response – Display Response
+  you send a request, the server receives your request, process the request, send the response to the request, 
+  and the client receives the response, acts upon that, and may generate further requests
+  
+• Exploits the use of the HTTP protocol beyond HTTP POST and HTTP GET
+– HTTP PUT, HTTP DELETE
+– Preserve Idempotences
+
+REST Concepts:
+Nouns (Resources)
+unconstrained
+i.e., http://www.conFusion.food/dishes/123
+Nouns specifically refer to resources, and these are resources are usually identified by their URLs and these are unconstrained. 
+
+Verbs
+constrained
+i.e., GET, PUT, POST, DELETE
+Verbs are constrained and these specify the actions to be done on the resources.
+
+Representations
+constrained
+i.e., XML, JSON
+when the information needs to be conveyed from the server to the client or from the client or the server, how you encode the information, 
+typically, either using JSON or using XML.
+
+Resources
+• The key abstraction of information in REST is a resource.
+• A resource is a conceptual mapping to a set of entities
+  – Any information that can be named can be a resource: a document or image, a temporal service (e.g. "today's weather in Hong Kong"), 
+    a collection of other resources, a non-virtual object (e.g. a person), and so on
+• Represented with a global identifier (URI in HTTP)
+  – http://www.conFusion.food/dishes/123
+  
+resource is identified by specifying it by using a URL. So, any information that can be encapsulated and be made 
+available can be identified as a resource.
+
+An example of how you name resources is illustrated here. :
+Naming Resources
+• REST uses URI to identify resources
+  – http://www.conFusion.food/dishes/
+  – http://www.conFusion.food/dishes/123
+  – http://www.conFusion.food/promotions/
+  – http://www.conFusion.food/leadership/
+  – http://www.conFusion.food/leadership/456
+• As you traverse the path from more generic to more specific, you are navigating the data
+• Directory structure to identify resources
+
+The second part of the REST API are the verbs:
+Verbs
+• Represent the actions to be performed on resources
+    – Corresponding to the CRUD operations
+• HTTP GET ßà READ
+• HTTP POST ßà CREATE
+• HTTP PUT ßà UPDATE
+• HTTP DELETE ßà DELETE
+
+HTTP GET
+• Used by clients to request for information
+• Issuing a GET request transfers the data from the server to the client in some representation (XML,JSON)
+– GET http://www.conFusion.food/dishes/
+• Retrieve all dishes
+– GET http://www.conFusion.food/dishes/452
+• Retrieve information about the specific dish
+
+HTTP PUT, HTTP POST, HTTP DELETE 
+• HTTP POST creates a resource
+  – POST http://www.conFusion.food/feedback/
+• Content: {first name, last name, email, comment etc.}
+• Creates a new feedback with given properties
+
+• HTTP PUT updates a resource
+  – PUT http://www.conFusion.food/dishes/123
+• Content: {name, image, description, comments …}
+• Updates the information about the dish, e.g., comments
+
+• HTTP DELETE removes the resource identified by the URI
+  – DELETE http://www.conFusion.food/dishes/456
+• Delete the specified dish
+
+Representations
+• How data is represented or returned to the client for presentation
+• Two main formats:
+– JavaScript Object Notation (JSON)
+– XML
+• It is common to have multiple representations of the same data
+– Client can request the data in a specific format if supported
+
+Stateless Server
+• Server side should not track the client state:
+– Every request is a new request from the client
+• Client side should track its own state:
+– E.g., using cookies, client side database
+– Every request must include sufficient information for server to serve up the requested information
+– Client-side MVC setup
+
+it's the responsibility of the client to track it's own state, either in the form of using cookies or using a client side database, 
+whatever means that is suitable. 

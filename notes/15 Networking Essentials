@@ -1,0 +1,51 @@
+• HTTP Verbs
+– HEAD
+– GET
+– POST
+– PUT
+– DELETE
+– TRACE
+– OPTIONS
+– CONNECT
+
+HTTP Response Codes 
+Code Meaning
+200 OK
+201 Created
+301 Moved Permanently
+304 Not Modified
+400 Bad Request
+401 Unauthorized
+403 Forbidden
+404 Not Found
+422 Unprocessable Entry
+500 Internal Server Error
+505 HTTP Version Not Supported
+
+HTTP Response
+• Server may send back data in a specific format:
+– eXtensible Markup Language (XML)
+– Javascript Object Notation (JSON)
+
+Javascript Object Notation (JSON)
+• http://www.json.org
+• Lightweight data interchange format
+• Language independent *
+• Self-describing and easy to understand
+• Data structured as:
+– A collection of name/value pairs
+– Ordered list of values
+
+– Example
+{ "promotions": 
+[
+    {
+        "id": 0,
+        "name": "Weekend Grand Buffet",
+        "image": "images/buffet.png",
+        "label": "New",
+        "price": "19.99",
+        "description": "Featuring mouthwatering combinations . . . "
+    }
+]
+}

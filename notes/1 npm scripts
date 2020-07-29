@@ -6,3 +6,12 @@ npm install react-redux
 npm install react-redux-form
 npm install redux-thunk
 npm install redux-logger
+
+npm install json-server -g
+json-server --watch db.json -p 3001 -d 2000 
+  This should start up a server at port number 3001 on your machine
+The reason for using this watch flag is that? This json-server will keep a watch on the db.jason file and anytime the db.jason file is modified. 
+It'll reload the db.jason file and start serving up that modified data from the server. In addition, we can also give it -d flag, with a value, 
+say for example, 2000. Which means that when the server receives a request, it will serve the data back to the requester after a two second delay.
+
+npm install cross-fetch

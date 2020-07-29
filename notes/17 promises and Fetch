@@ -1,0 +1,108 @@
+it is important that whenever your results are going to take time you should be able to proceed forward without waiting for the result.
+Promises provide us with a way of dealing with this.
+
+A promise is a mechanism that supports asynchronous computation.
+
+Promise
+• Promise is a mechanism that supports asynchronous computation
+• Proxy for a value not necessarily known when the promise is created:
+    – It represents a value that may be available now, or in the future, or never
+
+a promise will return a promise to you saying that when the result becomes available it'll come back and deliver the results to you. 
+So, a promise returns a proxy object to you and you hold onto the proxy object and that proxy object will give you access to the results 
+when they become available. 
+
+Why Promises?
+• Solves the callback hell (heavily nested callback code) problem
+• Promises can be chained
+• Can immediately return:
+    – Promise.resolve(result)
+    – Promise.reject(error)
+
+/**********************************************************Fetch************************************************************/
+
+Fetch
+• XMLHttpRequest() is quite cumbersome and outdated
+    – Has been made palatable by wrapping it appropriately in most JavaScript libraries like jQuery as Ajax
+• The Fetch API is a modern replacement for XMLHttpRequest
+    – Provides an interface for fetching resources (including across the network)
+    – More powerful and flexible feature set
+    – Promise based
+
+Fetch Abstractions:
+• Request: Represents a resource request
+• Response: Represents the response to a request
+• Headers: Represents response/request headers, allowing you to query them and take different actions depending on the results
+• Body: Provides methods relating to the body of the response/request, allowing you to declare what its content type is and how it should be handled
+
+Fetch Usage:
+fetch(baseUrl + ‘dishes’)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error.message));
+
+Fetch Posting Data:
+fetch(baseUrl + 'comments', {
+    method: 'POST’,
+    body: JSON.stringify(newComment),
+    headers: {
+        'Content-Type': 'application/json’
+    },
+    credentials: 'same-origin’
+})
+If you want to perform any other kind of HTTP request, other than get, then you can explicitly specify the method in a second parameter that 
+you will supply to the fetch. The second parameter will be a JavaScript object with properties where you specify the details of what goes into 
+the message. So, for example, if you are posting some data to a REST API endpoint, in order to create a new object on the server side. 
+Then you could simply say, fetch and then supply the REST API end point following that within a JavaScript object you can specify the method as 
+POST for example.
+
+Then you can even specify the body of the outgoing request message. So in this case, I am taking a newComment, which is a JavaScript object, 
+I'm stringifying, I'm converting that into JSON and then putting it into the body of the outgoing request message. 
+In addition, I can even configure the headers for this message by specifying the headers property in the JavaScript object there. 
+And so here, I'm specifying the content type as application/json. And also I can specify credentials same-origin. Meaning that you include 
+credentials only when it is being sent to the same origin as specified in the URL about to the same server as specified. 
+
+Fetch Dealing with Errors
+fetch(baseUrl + 'dishes’)
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error.message));
+
+if the status code in the response message is within the normal limits 200 to 299 then it will set a property call as OK on the response.
+
+Promises allow us to give two callback functions as parameters to the then. The first callback function will be used when the promise resolves 
+correctly. The second callback function will be used when the promise is rejected. So the error part is where the rejection of the promise is 
+handled. 
+
+Cross-Fetch
+• Cross-Fetch library provides support for Fetch both in Node applications and Browsers
+    – Uses whatwg-fetch polyfill in browsers that do not have fetch support
+    – Uses node-fetch for Node applications on the server
+• To use in the application: 
+  import fetch from ‘cross-fetch’;
+
+If you are using fetch on browsers that don't have fetch already built in, then you can use a fetch polyfill that will be inserted. 
+Now cross-fetch is a an npm package that makes use of a fetch polyfill in situations where fetch is not inherently part of the browser 
+implementation. So, Cross-Fetch provides support for Fetch. Now, you can use Cross-Fetch even on the server side for doing Fetch. 
+So even within your Node GS application, if you want to contact another server, you can use Fetch also, and Cross-Fetch supports that. 
+So that's why in our application we may install Cross-Fetch. And then, this Cross-Fetch, if your browser doesn't have the Fetch built into it, 
+then it will resort to using the whatwg-fetch polyfill. The whatwg-fetch polyfill is a Implementation of the Fetch protocol, or the Fetch API, 
+that can be put into browsers that don't have native support for Fetch. And similarly, the Cross-Fetch will result using another implant package 
+called Node-Fetch, which is used if you're using this in a Node application. Now in our case, we are using it in our React application, and the 
+Create-React app automatically includes Cross-Fetch into our React application, so you don't need to explicitly do anything for using that. But, 
+if you are using Cross-Fetch, then within your application, when you use Fetch, you may simply import Fetch from Cross-Fetch into that JavaScript 
+module, and then make use of Fetch just like you use Fetch otherwise 
