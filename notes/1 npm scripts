@@ -7,6 +7,8 @@ npm install react-redux-form
 npm install redux-thunk
 npm install redux-logger
 npm install react-transition-group
+npm install react-animation-components
+npm install prop-types
 
 npm install json-server -g
 json-server --watch db.json -p 3001 -d 2000 

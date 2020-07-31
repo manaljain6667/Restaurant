@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({item, isLoading, errMess}) {
     if (isLoading) {
@@ -16,14 +17,22 @@ function RenderCard({item, isLoading, errMess}) {
     }
     else
         return(
-            <Card>
-                <CardImg width="100%" src={baseUrl + item.image} alt={item.name} />
-                <CardBody>
-                <CardTitle>{item.name}</CardTitle>
-                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
-                <CardText>{item.description}</CardText>
-                </CardBody>
-            </Card>
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                    <Card>
+                        <CardImg width="100%" src={baseUrl + item.image} alt={item.name} />
+                        <CardBody>
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
+                        <CardText>{item.description}</CardText>
+                        </CardBody>
+                    </Card>
+            </FadeTransform>
+            // When I apply this FadeTransform to this card, this card will initially be out of the screen in a small random pop up 
+            //on to the screen then the card is rendered in the view.
         );
 
 }
