@@ -10,6 +10,7 @@ import { Switch, Route, Redirect,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 //withrouter is required for configuring my React Component to connect to Redux.
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   
   postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
   fetchDishes: () => { dispatch(fetchDishes())},
-  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
+  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))}, 
   fetchComments: () => dispatch(fetchComments()),
   fetchPromos: () => dispatch(fetchPromos())
 });
@@ -57,7 +58,7 @@ class Main extends Component {
             promoErrMess={this.props.promotions.errMess}
             leader={this.props.leaders.filter((leader) => leader.featured)[0]}
         />
-      );
+      ); 
     }
     const DishWithId = ({match}) => {
       return(
@@ -79,18 +80,22 @@ class Main extends Component {
     return (
       <div>
         <Header />
-            <Switch>
-              <Route path='/home' component={HomePage} />
-              {/* When you have a URL ending with /home, then this will route me to this particular component 
-                  that is going to act as the view here. And the components name would be HomePage. */}
-              <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
-              <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-              {/* exact here that means that the path should exactly match this with nothing else, beyond menu */}
-              <Route path='/menu/:dishId' component={DishWithId} />
-              <Route path='/aboutus' component={Aboutus}/>
-              <Redirect to="/home" />
-              {/* if the URL part does not match anything then you will redirect it to the home component. */}
-            </Switch>
+            <TransitionGroup>
+              <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                <Switch location={this.props.location}>
+                  <Route path='/home' component={HomePage} />
+                  {/* When you have a URL ending with /home, then this will route me to this particular component 
+                      that is going to act as the view here. And the components name would be HomePage. */}
+                  <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
+                  <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+                  {/* exact here that means that the path should exactly match this with nothing else, beyond menu */}
+                  <Route path='/menu/:dishId' component={DishWithId} />
+                  <Route path='/aboutus' component={Aboutus}/>  
+                  <Redirect to="/home" />
+                  {/* if the URL part does not match anything then you will redirect it to the home component. */}
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
         <Footer />
       </div>
     );
