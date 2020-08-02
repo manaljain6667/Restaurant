@@ -17,9 +17,16 @@ class Contact extends Component{
     // this is invoked upon any change to any input value in our form.
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
         this.props.resetFeedbackForm();
+        this.props.postFeedback(
+            values.firstname,
+            values.lastname,
+            values.telnum,
+            values.email,
+            values.agree,
+            values.contactType,
+            values.message
+          );
         // event.preventDefault();
     }
     
